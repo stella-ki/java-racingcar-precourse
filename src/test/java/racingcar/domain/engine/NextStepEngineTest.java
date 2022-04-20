@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.generator.FuelGenerator;
 import racingcar.generator.NextStepFuelGenerator;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static racingcar.Assertions.assertRandomTest;
@@ -48,6 +49,34 @@ class NextStepEngineTest {
                     assertTrue(result);
                 },
                 5
+        );
+    }
+
+    @Test
+    void 범위이하값_에러_확인(){
+        assertRandomTest(
+                () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
+                () -> assertThatThrownBy(
+                        () -> {
+                            NextStepEngine engine = new NextStepEngine(new NextStepFuelGenerator());
+                            engine.move();
+                        }
+                ) .isInstanceOf(IllegalArgumentException.class),
+                -1
+        );
+    }
+
+    @Test
+    void 범위이상값_에러_확인(){
+        assertRandomTest(
+                () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
+                () -> assertThatThrownBy(
+                        () -> {
+                            NextStepEngine engine = new NextStepEngine(new NextStepFuelGenerator());
+                            engine.move();
+                        }
+                ) .isInstanceOf(IllegalArgumentException.class),
+                10
         );
     }
 
