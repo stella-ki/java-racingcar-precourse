@@ -10,7 +10,7 @@ public class NextStepEngine extends Engine{
     }
 
     public boolean gearShift(int value){
-        if(value > Config.MAX_FUAL_VALUE){
+        if(value > Config.MAX_FUAL_VALUE || value < Config.MIN_INPUT_VALUE){
             throw new IllegalArgumentException();
         }
         return value >= Config.MOVE_FORWARD_FUAL_VALUE;
