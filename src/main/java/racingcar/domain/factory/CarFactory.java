@@ -27,7 +27,7 @@ public class CarFactory {
         String[] split = input.split(",");
 
         if (split.length < 1) {
-            System.out.println("경주할 자동차를 1대 이상 입력해 주세요.");
+            throw new IllegalArgumentException("경주할 자동차를 1대 이상 입력해 주세요.");
         }
 
         for (String name : split) {
@@ -38,6 +38,12 @@ public class CarFactory {
     }
 
     public Car getCar(String name){
+        if(engine == null){
+            throw new IllegalStateException("Engine을 설정해주세요.");
+        }
+        if(validator == null){
+            throw new IllegalStateException("이름 검증 validator를 설정해주세요.");
+        }
         return new Car(name, engine, validator);
     }
 
