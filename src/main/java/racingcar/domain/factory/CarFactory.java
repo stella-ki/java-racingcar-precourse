@@ -23,12 +23,12 @@ public class CarFactory {
     }
 
     public Cars makeCar(String input) throws IllegalArgumentException {
-        List<Car> carList = new ArrayList<>();
-        String[] split = input.split(",");
-
-        if (split.length < 1) {
+        if (!input.contains(",")) {
             throw new IllegalArgumentException("경주할 자동차를 1대 이상 입력해 주세요.");
         }
+
+        List<Car> carList = new ArrayList<>();
+        String[] split = input.split(",");
 
         for (String name : split) {
             carList.add(getCar(name));
