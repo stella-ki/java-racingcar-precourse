@@ -1,0 +1,69 @@
+package racingcar.domain.cars;
+
+import org.junit.jupiter.api.Test;
+import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.car.*;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static racingcar.Assertions.assertRandomTest;
+
+class CarsTest {
+
+    @Test
+    void 자동차_리스트_정상_반환_테스트() {
+        List<Car> carList = new ArrayList<>();
+
+        NextStepCar nextStepCar1 = new NextStepCar("car1");
+        NextStepCar nextStepCar2 = new NextStepCar("car2");
+        NextStepCar nextStepCar3 = new NextStepCar("car3");
+
+        nextStepCar1.move();
+        nextStepCar2.move();
+        nextStepCar3.move();
+
+        carList.add(nextStepCar1);
+        carList.add(nextStepCar2);
+        carList.add(nextStepCar3);
+
+        Cars cars = new Cars(carList);
+
+        assertEquals(nextStepCar1, cars.getCar(0), "설정된 car 객채와 가져온 car객체가 다릅니다.");
+        assertEquals(nextStepCar2, cars.getCar(1), "설정된 car 객채와 가져온 car객체가 다릅니다.");
+        assertEquals(nextStepCar3, cars.getCar(2), "설정된 car 객채와 가져온 car객체가 다릅니다.");
+
+    }
+
+    @Test
+    void 자동차_1등_정상_반환_테스트() {
+
+        assertRandomTest(
+                () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
+                () -> {
+
+                    List<Car> carList = new ArrayList<>();
+
+                    NextStepCar nextStepCar1 = new NextStepCar("car1");
+                    NextStepCar nextStepCar2 = new NextStepCar("car2");
+                    NextStepCar nextStepCar3 = new NextStepCar("car3");
+
+                    for(int i=0; i<2; i++){
+                        nextStepCar1.move();
+                        nextStepCar2.move();
+                        nextStepCar3.move();
+                    }
+
+                    carList.add(nextStepCar1);
+                    carList.add(nextStepCar2);
+                    carList.add(nextStepCar3);
+
+                    Cars cars = new Cars(carList);
+
+                    assertEquals(2, cars.getMaxLocation(), "max 값은 2여야 합니다.");
+
+                },
+                1,new Integer[]{5,3,3,7,2}
+        );
+    }
+}
