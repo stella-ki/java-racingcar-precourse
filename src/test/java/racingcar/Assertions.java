@@ -24,4 +24,19 @@ public class Assertions {
             }
         });
     }
+
+
+    public static <T> void assertRandomTest(
+            final MockedStatic.Verification verification,
+            final Executable executable,
+            final Integer value,
+            final Integer[] values
+    ) {
+        assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT, () -> {
+            try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
+                mock.when(verification).thenReturn(value, values);
+                executable.execute();
+            }
+        });
+    }
 }
