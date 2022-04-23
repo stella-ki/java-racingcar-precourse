@@ -22,4 +22,8 @@ public class Cars {
         return cars.get(0).getLocation();
     }
 
+    public Car getCar(int index){
+        return cars.get(index);
+    }
+
 }
