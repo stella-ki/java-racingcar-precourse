@@ -25,6 +25,18 @@ class CarFactoryTest {
     }
 
     @Test
+    void 자동차_이름_에러_확인() {
+        assertThatThrownBy(
+                () -> new CarFactory()
+                        .setEngine(new NextStepEngine(
+                                new NextStepFuelGenerator()
+                        ))
+                        .setValidatorName(new NextStepValidatorName())
+                        .makeCar("carcarcar, car2")
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void ENGINE_NULL_에러_확인() {
         assertThatThrownBy(
                 () -> new CarFactory()
