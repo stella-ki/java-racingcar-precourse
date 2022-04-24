@@ -46,7 +46,7 @@ class CarFactoryTest {
     }
 
     @Test
-    void VALIDATORNAME_에러_확인() {
+    void VALIDATOR_NAME_에러_확인() {
         assertThatThrownBy(
                 () -> new CarFactory()
                         .setEngine(new NextStepEngine(
