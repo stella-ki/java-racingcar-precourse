@@ -31,7 +31,7 @@ public class CarFactory {
         String[] split = input.split(",");
 
         for (String name : split) {
-            carList.add(getCar(name));
+            carList.add(getCar(name.trim()));
         }
 
         return new Cars(carList);
