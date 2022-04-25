@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import racingcar.config.Message;
 import racingcar.domain.car.component.*;
 import racingcar.domain.engine.Engine;
 import racingcar.validator.name.ValidatorName;
@@ -40,6 +41,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return String.format("%s : %s", carName.toString(), carLocation.toString());
+        return String.format(Message.FORMAT_CAR_PRINT, carName.toString(), carLocation.toString());
     }
 }

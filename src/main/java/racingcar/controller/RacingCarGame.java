@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.config.Message;
 import racingcar.domain.car.Car;
 import racingcar.domain.cars.Cars;
 
@@ -29,7 +30,7 @@ public class RacingCarGame {
         Car car = cars.getCar(index);
 
         while(car.getLocation() == winnerCnt){
-            sb.append(String.format(", %s",  car.getName()));
+            sb.append(String.format(Message.FORMAT_WINNER_EACH,  car.getName()));
         }
 
         return sb.toString();

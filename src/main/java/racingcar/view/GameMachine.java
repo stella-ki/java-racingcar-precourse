@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.config.Message;
 import racingcar.controller.RacingCarGame;
 import racingcar.domain.factory.CarFactory;
 import racingcar.validator.count.ValidatorCount;
@@ -16,18 +17,19 @@ public class GameMachine {
 
     public void checkPrepareFactory() throws IllegalStateException{
         if(carFactory == null){
-            throw new IllegalStateException("Car factory가 설정되어야 합니다.");
+            throw new IllegalStateException(Message.ERROR_CAR_FACTORY_NULL);
         }
     }
 
     public void run(){
         try {
+
             checkPrepareFactory();
 
             processGame();
 
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.printf(Message.FORMAT_ERROR_PRINT, e.getMessage());
         }
     }
 
@@ -45,7 +47,7 @@ public class GameMachine {
     }
 
     public String inputCars() throws IllegalArgumentException{
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은쉼표(,) 기준으로 구분)");
+        System.out.println(Message.GUIDE_INPUT_CAR_NAME);
         String input = Console.readLine();
         System.out.println(input);
 
@@ -53,7 +55,7 @@ public class GameMachine {
     }
 
     public int inputCnt() throws IllegalArgumentException{
-        System.out.println("시도할 회수는 몇 회인가요?");
+        System.out.println(Message.GUIDE_INPUT_COUNT);
         return (new ValidatorCount()).validateCnt();
     }
 
@@ -64,6 +66,6 @@ public class GameMachine {
     }
 
     public void printWinner(String winner){
-        System.out.printf("최종 우승자는 %s 입니다.%n", winner);
+        System.out.printf(Message.FORMAT_WINNER_PRINT, winner);
     }
 }

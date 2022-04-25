@@ -1,6 +1,7 @@
 package racingcar.validator.count;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.config.Message;
 
 public class ValidatorCount {
     public int validateCnt() throws IllegalArgumentException{
@@ -9,7 +10,7 @@ public class ValidatorCount {
             cnt=  Integer.parseInt(Console.readLine());
             System.out.println(cnt);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
+            throw new IllegalArgumentException(Message.ERROR_COUNT_WRONG);
         }
         return cnt;
     }

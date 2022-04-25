@@ -1,5 +1,6 @@
 package racingcar.domain.factory;
 
+import racingcar.config.Message;
 import racingcar.domain.car.Car;
 import racingcar.domain.cars.Cars;
 import racingcar.domain.engine.Engine;
@@ -23,12 +24,12 @@ public class CarFactory {
     }
 
     public Cars makeCar(String input) throws IllegalArgumentException {
-        if (!input.contains(",")) {
-            throw new IllegalArgumentException("경주할 자동차를 1대 이상 입력해 주세요.");
+        if (!input.contains(Message.FORMAT_SPLIT)) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_CAR_NAME);
         }
 
         List<Car> carList = new ArrayList<>();
-        String[] split = input.split(",");
+        String[] split = input.split(Message.FORMAT_SPLIT);
 
         for (String name : split) {
             carList.add(getCar(name.trim()));
@@ -39,10 +40,10 @@ public class CarFactory {
 
     public Car getCar(String name){
         if(engine == null){
-            throw new IllegalStateException("Engine을 설정해주세요.");
+            throw new IllegalStateException(Message.ERROR_ENGINE_NULL);
         }
         if(validator == null){
-            throw new IllegalStateException("이름 검증 validator를 설정해주세요.");
+            throw new IllegalStateException(Message.ERROR_VALIDATOR_NULL);
         }
         return new Car(name, engine, validator);
     }
