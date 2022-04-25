@@ -10,8 +10,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidatorCountTest {
 
     @Test
+    @DisplayName("ValidatorCount가 0 이하의 값이 들어왔을 때 에러를 발생시키는지 확인한다.")
+    void 비정상_INPUT_검증_0() {
+        assertThatThrownBy(
+                () -> {
+                    consoleInput(new String[]{"-1"});
+
+                    ValidatorCount validatorCount = new ValidatorCount();
+                    validatorCount.validateCnt();
+                }
+        ).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("실행할 횟수를 0 이상 입력해주세요.");
+    }
+
+    @Test
     @DisplayName("ValidatorCount가 정수가 아닌 값이 들어왔을 때 에러를 발생시키는지 확인한다.")
-    void 비정상_INPUT_검증() {
+    void 비정상_INPUT_검증_String() {
         assertThatThrownBy(
                 () -> {
                     consoleInput(new String[]{"e"});
