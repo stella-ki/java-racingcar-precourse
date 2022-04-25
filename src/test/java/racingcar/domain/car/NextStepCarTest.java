@@ -2,10 +2,6 @@ package racingcar.domain.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.engine.NextStepEngine;
-import racingcar.generator.NextStepFuelGenerator;
-import racingcar.validator.name.NextStepValidatorName;
-import racingcar.validator.name.ValidatorName;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
