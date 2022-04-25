@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.NextStepCar;
 import racingcar.domain.cars.Cars;
 import racingcar.domain.factory.NextStepCarFactory;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static racingcar.Assertions.assertRandomTest;
@@ -27,9 +27,20 @@ class RacingCarGameTest {
     }
 
     @Test
+    void 필수_입력_파라메터_셋팅_에러_테스트() {
+        assertThatThrownBy(
+                () -> {
+                    Cars cars = new NextStepCarFactory().makeCar("car1, car2");
+                    RacingCarGame racingCarGame = new RacingCarGame();
+                    racingCarGame.play();
+                }
+        ).isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
     void CARS_객체_정상_생성_확인() {
         Cars cars = new NextStepCarFactory().makeCar("car1, car2");
-        RacingCarGame racingCarGame = new RacingCarGame(cars);
+        RacingCarGame racingCarGame = new RacingCarGame().setCars(cars);
         racingCarGame.cars.getCar(0);
 
         assertEquals("car1", racingCarGame.cars.getCar(0).getName(),"설정된 첫번째 자동차는 'car1'이여야 합니다.");
@@ -45,7 +56,7 @@ class RacingCarGameTest {
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
                 () ->  {
                     Cars cars = new NextStepCarFactory().makeCar("car1, car2");
-                    RacingCarGame racingCarGame = new RacingCarGame(cars);
+                    RacingCarGame racingCarGame = new RacingCarGame().setCars(cars);
                     racingCarGame.play();
 
                     assertThat(outputStreamCaptor.toString().contains("car1 : -, car2 : "));
@@ -60,7 +71,7 @@ class RacingCarGameTest {
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
                 () ->  {
                     Cars cars = new NextStepCarFactory().makeCar("car1, car2");
-                    RacingCarGame racingCarGame = new RacingCarGame(cars);
+                    RacingCarGame racingCarGame = new RacingCarGame().setCars(cars);
                     racingCarGame.play();
 
                     assertThat(outputStreamCaptor.toString().contains("최종 우승자는 car1 입니다."));
