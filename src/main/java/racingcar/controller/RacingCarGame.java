@@ -4,8 +4,6 @@ import racingcar.config.Message;
 import racingcar.domain.car.Car;
 import racingcar.domain.cars.Cars;
 
-import java.util.List;
-
 public class RacingCarGame {
 
     Cars cars;
@@ -34,18 +32,17 @@ public class RacingCarGame {
     public String findWinner() {
         int winnerCnt = cars.getMaxLocation();
 
-        return add_winner(1, winnerCnt, cars.getCar(0).getName());
+        return addWinner(1, winnerCnt, cars.getCar(0).getName());
     }
 
-    private String add_winner(int index, int winnerCnt, String result){
+    private String addWinner(int index, int winnerCnt, String result){
         if(cars.getCars().get(index).getLocation() == winnerCnt){
             result += Message.FORMAT_WINNER_EACH + cars.getCars().get(index).getName();
         }
         if(index + 1 >= cars.getCars().size()){
             return result;
         }
-        return add_winner(++index, winnerCnt, result);
-
+        return addWinner(++index, winnerCnt, result);
     }
 
 
