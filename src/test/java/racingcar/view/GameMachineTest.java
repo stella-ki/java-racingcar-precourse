@@ -37,7 +37,24 @@ class GameMachineTest {
                 )
                 .run();
 
-        assertTrue(outputStreamCaptor.toString().contains("[ERROR] 잘못된 값을 입력하셨습니다."));
+        assertTrue(outputStreamCaptor.toString().contains("[ERROR] 잘못된 값을 입력하셨습니다.(정수 입력)"));
+    }
+
+    @Test
+    @DisplayName("User가 입력한 게임 횟수가 0일 때 에러를 발생시키는지 확인한다.")
+    void INPUT_COUNT_0_에러_테스트() {
+        consoleInput(new String[]{"car1, car2", "0"});
+
+        new GameMachine()
+                .setCarFactory(
+                        new NextStepCarFactory()
+                )
+                .setRacingCarGame(
+                        new RacingCarGame()
+                )
+                .run();
+
+        assertTrue(outputStreamCaptor.toString().contains("[ERROR] 실행할 횟수를 0 이상 입력해주세요."));
     }
 
     @Test
