@@ -12,8 +12,7 @@ class ValidatorCountTest {
     void 비정상_INPUT_검증() {
         assertThatThrownBy(
                 () -> {
-                    final byte[] buf = String.join("\n", new String[]{"e"}).getBytes();
-                    System.setIn(new ByteArrayInputStream(buf));
+                    consoleInput(new String[]{"e"});
 
                     ValidatorCount validatorCount = new ValidatorCount();
                     validatorCount.validateCnt();
@@ -23,12 +22,16 @@ class ValidatorCountTest {
 
     @Test
     void 정상_INPUT_검증() {
-        final byte[] buf = String.join("\n", new String[]{"3"}).getBytes();
-        System.setIn(new ByteArrayInputStream(buf));
+        consoleInput(new String[]{"3"});
 
         ValidatorCount validatorCount = new ValidatorCount();
         int result = validatorCount.validateCnt();
 
         assertEquals(3, result, "숫자 3을 반환해야 합니다.");
+    }
+
+    public void consoleInput(String[] args) {
+        final byte[] buf = String.join("\n", args).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
     }
 }
