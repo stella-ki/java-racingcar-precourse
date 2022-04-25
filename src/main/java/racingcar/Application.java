@@ -1,7 +1,17 @@
 package racingcar;
 
+import racingcar.domain.factory.NextStepCarFactory;
+import racingcar.view.GameMachine;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        new GameMachine()
+                .setCarFactory(
+                        new NextStepCarFactory()
+                )
+                .run();
     }
+
+
 }
