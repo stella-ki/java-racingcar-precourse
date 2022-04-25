@@ -24,7 +24,7 @@ class GameMachineTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("User가 입력한 게임 횟수가 숫자 포맷이 아닐때 에러를 발생시키는지 확인한다.")
     void INPUT_COUNT_비정상_에러_테스트() {
         consoleInput(new String[]{"car1, car2", "F"});
 
@@ -41,6 +41,7 @@ class GameMachineTest {
     }
 
     @Test
+    @DisplayName("User가 입력한 자동차의 이름의 길이가 5이상 일 때 에러를 발생시키는지 확인한다.")
     void INPUT_CAR_비정상_이름_길이_에러_테스트() {
         consoleInput(new String[]{"carcarcar, car2", "1"});
 
@@ -58,6 +59,7 @@ class GameMachineTest {
 
 
     @Test
+    @DisplayName("User가 입력한 자동차의 개수가 0이하 일 때 에러를 발생시키는지 확인한다.")
     void INPUT_CAR_비정상_개수_에러_테스트() {
         consoleInput(new String[]{"", "1"});
 
@@ -74,6 +76,7 @@ class GameMachineTest {
     }
 
     @Test
+    @DisplayName("GameMachine 실행을 위한 필수 파라메터가 정상적으로 설정되지 않았을때 에러를 발생하는지 확인한다.")
     void 필수_입력_파라메터_셋팅_에러_테스트() {
         consoleInput(new String[]{"car1, car2", "1"});
 
@@ -95,6 +98,7 @@ class GameMachineTest {
     }
 
     @Test
+    @DisplayName("User가 설정한 횟수 만큼 게임을 진행하고, 출력 포맷이 정상적으로 보이는지 확인한다.")
     void 게임_진행_횟수_정상_테스트() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
@@ -120,6 +124,7 @@ class GameMachineTest {
     }
 
     @Test
+    @DisplayName("게임 종료 후 우승자 출력부가 포멧에 맞게 보여지는지 확인한다.")
     void 게임_결과_출력_포멧_정상_테스트() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),

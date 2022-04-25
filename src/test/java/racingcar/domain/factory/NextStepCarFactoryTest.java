@@ -1,5 +1,6 @@
 package racingcar.domain.factory;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.NextStepCar;
 import racingcar.domain.cars.Cars;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class NextStepCarFactoryTest {
 
     @Test
+    @DisplayName("NextStepCarFactory에 자동차들의 String값에 자동차 이름이 없을때 에러를 발생시키는지 확인한다.")
     void 자동차_갯수_0_에러_확인() {
         assertThatThrownBy(
                 () -> new NextStepCarFactory()
@@ -19,6 +21,7 @@ class NextStepCarFactoryTest {
     }
 
     @Test
+    @DisplayName("NextStepCarFactory에 자동차들의 String값을 입력 중 이름의 길이가 조건에 맞지 않을때 에러를 발생시키는지 확인한다.")
     void 자동차_이름_에러_확인() {
         assertThatThrownBy(
                 () -> new NextStepCarFactory()
@@ -28,6 +31,7 @@ class NextStepCarFactoryTest {
     }
     
     @Test
+    @DisplayName("NextStepCarFactory에 자동차들의 String값을 입력 시 객체를 정상적으로 생성하는지 확인한다.")
     void 리스트_정상_반환_확인() {
         Cars cars = new NextStepCarFactory()
                 .makeCar("car1,car2");

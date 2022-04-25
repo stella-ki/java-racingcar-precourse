@@ -3,6 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.NextStepCar;
 import racingcar.domain.cars.Cars;
@@ -26,6 +27,7 @@ class RacingCarGameTest {
     }
 
     @Test
+    @DisplayName("RacingCarGame가 실행을 위한 필수 파라메터가 정상적으로 설정되지 않았을때 에러를 발생하는지 확인한다.")
     void 필수_입력_파라메터_셋팅_에러_테스트() {
         assertThatThrownBy(
                 () -> {
@@ -38,6 +40,7 @@ class RacingCarGameTest {
     }
 
     @Test
+    @DisplayName("RacingCarGame가 input으로 들어온 자동차를 정상적으로 저장하고 있는지 확인한다.")
     void CARS_객체_정상_생성_확인() {
         Cars cars = new NextStepCarFactory().makeCar("car1, car2");
         RacingCarGame racingCarGame = new RacingCarGame().setCars(cars);
@@ -51,6 +54,7 @@ class RacingCarGameTest {
     }
 
     @Test
+    @DisplayName("RacingCarGame의 각 게임당 출력되는 포멧이 정상인지 확인한다.")
     void 게임_진행_정상_확인() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
@@ -67,6 +71,7 @@ class RacingCarGameTest {
     }
 
     @Test
+    @DisplayName("RacingCarGame의 게임 우승자 출력 포멧이 정상인지 확인한다.")
     void 우승자_정상_반환_확인() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),

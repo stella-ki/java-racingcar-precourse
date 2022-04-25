@@ -1,5 +1,6 @@
 package racingcar.domain.cars;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.car.*;
@@ -12,6 +13,7 @@ import static racingcar.Assertions.assertRandomTest;
 class CarsTest {
 
     @Test
+    @DisplayName("Cars 객체가 설정된 car의 객체들의 정보를 정상적으로 반환하는지 확인한다")
     void 자동차_리스트_정상_반환_테스트() {
         List<Car> carList = new ArrayList<>();
 
@@ -29,13 +31,14 @@ class CarsTest {
 
         Cars cars = new Cars(carList);
 
-        assertEquals(nextStepCar1, cars.getCar(0), "설정된 car 객채와 가져온 car객체가 다릅니다.");
-        assertEquals(nextStepCar2, cars.getCar(1), "설정된 car 객채와 가져온 car객체가 다릅니다.");
-        assertEquals(nextStepCar3, cars.getCar(2), "설정된 car 객채와 가져온 car객체가 다릅니다.");
+        assertEquals(nextStepCar1, cars.getCar(0), "설정된 car 객체와 가져온 car객체가 다릅니다.");
+        assertEquals(nextStepCar2, cars.getCar(1), "설정된 car 객체와 가져온 car객체가 다릅니다.");
+        assertEquals(nextStepCar3, cars.getCar(2), "설정된 car 객체와 가져온 car객체가 다릅니다.");
 
     }
 
     @Test
+    @DisplayName("Cars 객체가 게임 실행 후 max값을 정상적으로 반환하는지 확인한다.")
     void 자동차_1등_정상_반환_테스트() {
 
         assertRandomTest(

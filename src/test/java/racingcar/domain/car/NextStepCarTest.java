@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -12,6 +13,7 @@ import static racingcar.Assertions.assertRandomTest;
 class NextStepCarTest {
 
     @Test
+    @DisplayName("NextStepCar가 정상 랜덤 값에 에러를 발생시키지 않는지 확인한다.")
     void FUEL_정상_설정_여부_검증() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
@@ -26,6 +28,7 @@ class NextStepCarTest {
     }
 
     @Test
+    @DisplayName("NextStepCar가 비정상 랜덤 값에 에러를 발생시키는지 확인한다.")
     void FUEL_비정상_시_에러_발생_여부_검증() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
@@ -41,6 +44,7 @@ class NextStepCarTest {
     }
 
     @Test
+    @DisplayName("NextStepCar가 전진에 따른 차의 위치를 정상적으로 반환하는지 확인한다.")
     void 전진_여부_검증() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),
@@ -54,6 +58,7 @@ class NextStepCarTest {
     }
 
     @Test
+    @DisplayName("NextStepCar가 정상적인 이름을 에러없이 처리하는지 확인한다.")
     void 이름_정상_설정_여부_검증() {
         assertThatCode(
                 () -> {
@@ -63,6 +68,7 @@ class NextStepCarTest {
     }
 
     @Test
+    @DisplayName("NextStepCar에 비정상적인 이름 설정 시 에러를 발생시키는지 확인한다.")
     void 이름_비정상_시_에러_발생_여부_검증() {
         assertThatThrownBy(
                 () -> {
@@ -73,6 +79,7 @@ class NextStepCarTest {
     }
 
     @Test
+    @DisplayName("NextStepCar가 자동차의 이름 및 위치 출력을 정상적으로 반환하는지 확인한다.")
     void 출력부_포맷_검증() {
         assertRandomTest(
                 () -> Randoms.pickNumberInRange(anyInt(), anyInt()),

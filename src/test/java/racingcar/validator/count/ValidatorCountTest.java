@@ -1,5 +1,6 @@
 package racingcar.validator.count;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidatorCountTest {
 
     @Test
+    @DisplayName("ValidatorCount가 정수가 아닌 값이 들어왔을 때 에러를 발생시키는지 확인한다.")
     void 비정상_INPUT_검증() {
         assertThatThrownBy(
                 () -> {
@@ -22,6 +24,7 @@ class ValidatorCountTest {
     }
 
     @Test
+    @DisplayName("ValidatorCount가 String으로 들어온 정수 값을 정상적으로 반환하는지 확인한다.")
     void 정상_INPUT_검증() {
         consoleInput(new String[]{"3"});
 
