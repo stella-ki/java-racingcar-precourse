@@ -15,16 +15,24 @@ public class GameMachine {
         return this;
     }
 
-    public void checkPrepareFactory() throws IllegalStateException{
+    public GameMachine setRacingCarGame(RacingCarGame game){
+        this.game = game;
+        return this;
+    }
+
+    public void checkPrepareGame() throws IllegalStateException{
         if(carFactory == null){
             throw new IllegalStateException(Message.ERROR_CAR_FACTORY_NULL);
+        }
+        if(game == null){
+            throw new IllegalStateException(Message.ERROR_RACING_CAR_GAME_NULL);
         }
     }
 
     public void run(){
         try {
 
-            checkPrepareFactory();
+            checkPrepareGame();
 
             processGame();
 
@@ -37,7 +45,7 @@ public class GameMachine {
         String input = inputCars();
         int gameCnt = inputCnt();
 
-        game = new RacingCarGame(carFactory.makeCar(input));
+        game.setCars(carFactory.makeCar(input));
 
         playGames(gameCnt);
 

@@ -8,6 +8,8 @@ public class Message {
     public static String ERROR_ENGINE_NULL          = "Engine을 설정해주세요.";
     public static String ERROR_VALIDATOR_NULL       = "이름 검증 validator를 설정해주세요.";
     public static String ERROR_CAR_FACTORY_NULL     = "Car factory가 설정되어야 합니다.";
+    public static String ERROR_RACING_CAR_GAME_NULL = "Racing car Game이 설정되어야 합니다.";
+    public static String ERROR_CARS_NULL            = "Cars가 설정되어야 합니다.";
 
     public static String GUIDE_INPUT_CAR_NAME       = "경주할 자동차 이름을 입력하세요.(이름은쉼표(,) 기준으로 구분)";
     public static String GUIDE_INPUT_COUNT          = "시도할 회수는 몇 회인가요?";
