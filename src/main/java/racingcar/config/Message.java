@@ -17,7 +17,7 @@ public class Message {
 
     public static String FORMAT_SPLIT               = ",";
     public static String FORMAT_WINNER_PRINT        = "최종 우승자: %s%n";
-    public static String FORMAT_WINNER_EACH         = ", %s";
+    public static String FORMAT_WINNER_EACH         = ", ";
     public static String FORMAT_CAR_PRINT           = "%s : %s";
     public static String FORMAT_ERROR_PRINT         = "[ERROR] %s%n";
 }
