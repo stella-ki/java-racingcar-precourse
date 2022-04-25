@@ -60,7 +60,8 @@ class NextStepEngineTest {
                             NextStepEngine engine = new NextStepEngine(new NextStepFuelGenerator());
                             engine.move();
                         }
-                ) .isInstanceOf(IllegalArgumentException.class),
+                ) .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("랜덤 값의 범위를 벗어났습니다."),
                 -1
         );
     }
@@ -74,7 +75,8 @@ class NextStepEngineTest {
                             NextStepEngine engine = new NextStepEngine(new NextStepFuelGenerator());
                             engine.move();
                         }
-                ) .isInstanceOf(IllegalArgumentException.class),
+                ) .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("랜덤 값의 범위를 벗어났습니다."),
                 10
         );
     }

@@ -14,7 +14,8 @@ class NextStepCarFactoryTest {
         assertThatThrownBy(
                 () -> new NextStepCarFactory()
                         .makeCar("")
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("경주할 자동차를 1대 이상 입력해 주세요.");
     }
 
     @Test
@@ -22,7 +23,8 @@ class NextStepCarFactoryTest {
         assertThatThrownBy(
                 () -> new NextStepCarFactory()
                         .makeCar("carcarcar, car2")
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("이름의 길이가 잘못되었습니다.");
     }
     
     @Test

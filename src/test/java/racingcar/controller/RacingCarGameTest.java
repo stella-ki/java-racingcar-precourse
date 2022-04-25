@@ -34,7 +34,8 @@ class RacingCarGameTest {
                     RacingCarGame racingCarGame = new RacingCarGame();
                     racingCarGame.play();
                 }
-        ).isInstanceOf(IllegalStateException.class);
+        ).isInstanceOf(IllegalStateException.class)
+            .hasMessageContaining("Cars가 설정되어야 합니다.");
     }
 
     @Test

@@ -34,7 +34,8 @@ class NextStepCarTest {
                             Car car = new NextStepCar("test");
                             car.move();
                         }
-                ) .isInstanceOf(IllegalArgumentException.class),
+                ) .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("랜덤 값의 범위를 벗어났습니다."),
                 -1
         );
     }
@@ -67,7 +68,8 @@ class NextStepCarTest {
                 () -> {
                     Car car = new NextStepCar("carName");
                 }
-        ) .isInstanceOf(IllegalArgumentException.class);
+        ) .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("이름의 길이가 잘못되었습니다.");
     }
 
     @Test

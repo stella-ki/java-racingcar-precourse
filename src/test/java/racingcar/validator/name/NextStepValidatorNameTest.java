@@ -13,7 +13,8 @@ class NextStepValidatorNameTest {
                     ValidatorName validatorName = new NextStepValidatorName();
                     validatorName.validateCarsName("carname");
                 }
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("이름의 길이가 잘못되었습니다.");
     }
 
     @Test

@@ -17,7 +17,8 @@ class ValidatorCountTest {
                     ValidatorCount validatorCount = new ValidatorCount();
                     validatorCount.validateCnt();
                 }
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("잘못된 값을 입력하셨습니다.(정수 입력)");
     }
 
     @Test
