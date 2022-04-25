@@ -36,7 +36,11 @@ public class Car implements Comparable<Car> {
         if(this.getLocation() < car.getLocation()){
             return 1;
         }
-        return -1;
+        if(this.getLocation() > car.getLocation()){
+            return -1;
+        }
+
+        return this.getName().compareTo(car.getName());
     }
 
     @Override
