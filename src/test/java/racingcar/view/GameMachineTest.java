@@ -140,7 +140,7 @@ class GameMachineTest {
                             )
                             .run();
 
-                    assertTrue(outputStreamCaptor.toString().contains("최종 우승자는 car2 입니다."),"우승자 출력 포맷이 비정상 입니다.");
+                    assertTrue(outputStreamCaptor.toString().contains("최종 우승자: car2"),"우승자 출력 포맷이 비정상 입니다.");
                 },
                 1,new Integer[]{8}
         );

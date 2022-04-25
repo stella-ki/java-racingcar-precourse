@@ -15,7 +15,7 @@ public class Message {
     public static String GUIDE_INPUT_COUNT          = "시도할 회수는 몇 회인가요?";
 
     public static String FORMAT_SPLIT               = ",";
-    public static String FORMAT_WINNER_PRINT        = "최종 우승자는 %s 입니다.%n";
+    public static String FORMAT_WINNER_PRINT        = "최종 우승자: %s%n";
     public static String FORMAT_WINNER_EACH         = ", %s";
     public static String FORMAT_CAR_PRINT           = "%s : %s";
     public static String FORMAT_ERROR_PRINT         = "[ERROR] %s%n";
