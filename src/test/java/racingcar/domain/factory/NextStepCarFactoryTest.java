@@ -18,6 +18,14 @@ class NextStepCarFactoryTest {
     }
 
     @Test
+    void 자동차_이름_에러_확인() {
+        assertThatThrownBy(
+                () -> new NextStepCarFactory()
+                        .makeCar("carcarcar, car2")
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @Test
     void 리스트_정상_반환_확인() {
         Cars cars = new NextStepCarFactory()
                 .makeCar("car1,car2");
