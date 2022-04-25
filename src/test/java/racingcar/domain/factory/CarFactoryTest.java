@@ -1,7 +1,6 @@
 package racingcar.domain.factory;
 
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
 import racingcar.domain.cars.Cars;
 import racingcar.domain.engine.NextStepEngine;
 import racingcar.generator.NextStepFuelGenerator;
@@ -42,7 +41,8 @@ class CarFactoryTest {
                 () -> new CarFactory()
                         .setValidatorName(new NextStepValidatorName())
                         .makeCar("car1,car2")
-        ).isInstanceOf(IllegalStateException.class);
+        ).isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Engine을 설정해주세요.");
     }
 
     @Test
@@ -53,7 +53,8 @@ class CarFactoryTest {
                                 new NextStepFuelGenerator()
                         ))
                         .makeCar("car1,car2")
-        ).isInstanceOf(IllegalStateException.class);
+        ).isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("이름 검증 validator를 설정해주세요.");
     }
 
     @Test
