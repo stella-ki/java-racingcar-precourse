@@ -59,7 +59,8 @@ class RacingCarGameTest {
                     RacingCarGame racingCarGame = new RacingCarGame().setCars(cars);
                     racingCarGame.play();
 
-                    assertThat(outputStreamCaptor.toString().contains("car1 : -, car2 : "));
+                    String output = outputStreamCaptor.toString().replaceAll("\r\n","\n");
+                    assertTrue(output.contains("car1 : -\ncar2 : "), "각 자동차당 게임 진행 출력 포멧이 비정상 입니다.");
                 },
                 8,new Integer[]{3}
         );
@@ -73,8 +74,9 @@ class RacingCarGameTest {
                     Cars cars = new NextStepCarFactory().makeCar("car1, car2");
                     RacingCarGame racingCarGame = new RacingCarGame().setCars(cars);
                     racingCarGame.play();
+                    String winner = racingCarGame.findWinner();
 
-                    assertThat(outputStreamCaptor.toString().contains("최종 우승자는 car1 입니다."));
+                    assertEquals("car1", winner, "우승자 반환 값이 비정상 입니다.");
                 },
                 8,new Integer[]{3}
         );
