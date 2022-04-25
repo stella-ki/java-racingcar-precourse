@@ -8,11 +8,20 @@ public class RacingCarGame {
 
     Cars cars;
 
-    public RacingCarGame(Cars cars){
+    public RacingCarGame setCars(Cars cars) {
         this.cars = cars;
+        return this;
+    }
+
+    public void checkPrepareCars(){
+        if(cars == null){
+            throw new IllegalStateException(Message.ERROR_CARS_NULL);
+        }
     }
 
     public void play() {
+        checkPrepareCars();
+
         for (Car car : cars.getCars()){
             car.move();
             System.out.println(car.toString());
