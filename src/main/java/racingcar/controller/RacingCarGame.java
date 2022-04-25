@@ -13,7 +13,7 @@ public class RacingCarGame {
         return this;
     }
 
-    public void checkPrepareCars(){
+    private void checkPrepareCars(){
         if(cars == null){
             throw new IllegalStateException(Message.ERROR_CARS_NULL);
         }

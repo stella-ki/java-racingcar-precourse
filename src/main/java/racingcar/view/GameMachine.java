@@ -20,7 +20,7 @@ public class GameMachine {
         return this;
     }
 
-    public void checkPrepareGame() throws IllegalStateException{
+    private void checkPrepareGame() throws IllegalStateException{
         if(carFactory == null){
             throw new IllegalStateException(Message.ERROR_CAR_FACTORY_NULL);
         }
@@ -41,7 +41,7 @@ public class GameMachine {
         }
     }
 
-    public void processGame(){
+    private void processGame(){
         String input = inputCars();
         int gameCnt = inputCnt();
 
@@ -54,7 +54,7 @@ public class GameMachine {
         printWinner(winner);
     }
 
-    public String inputCars() throws IllegalArgumentException{
+    private String inputCars() throws IllegalArgumentException{
         System.out.println(Message.GUIDE_INPUT_CAR_NAME);
         String input = Console.readLine();
         System.out.println(input);
@@ -62,18 +62,18 @@ public class GameMachine {
         return input;
     }
 
-    public int inputCnt() throws IllegalArgumentException{
+    private int inputCnt() throws IllegalArgumentException{
         System.out.println(Message.GUIDE_INPUT_COUNT);
         return (new ValidatorCount()).validateCnt();
     }
 
-    public void playGames(int gameCnt){
+    private void playGames(int gameCnt){
         for (int i = 0; i< gameCnt; i++){
             game.play();
         }
     }
 
-    public void printWinner(String winner){
+    private void printWinner(String winner){
         System.out.printf(Message.FORMAT_WINNER_PRINT, winner);
     }
 }

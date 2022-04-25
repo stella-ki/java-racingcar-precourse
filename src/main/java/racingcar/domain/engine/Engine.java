@@ -4,7 +4,7 @@ import racingcar.generator.FuelGenerator;
 
 public abstract class Engine {
 
-    FuelGenerator fuelGenerator;
+    protected FuelGenerator fuelGenerator;
 
     public boolean move(){
         int value = fuelGenerator.generateFuel();
